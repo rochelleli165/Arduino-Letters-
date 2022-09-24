@@ -46,6 +46,37 @@ public final class UsersGrpc {
     return getListNamesMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<io.grpc.examples.data.UsersRequest,
+      io.grpc.examples.data.UsersReply> getListAvailDriversMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ListAvailDrivers",
+      requestType = io.grpc.examples.data.UsersRequest.class,
+      responseType = io.grpc.examples.data.UsersReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<io.grpc.examples.data.UsersRequest,
+      io.grpc.examples.data.UsersReply> getListAvailDriversMethod() {
+    io.grpc.MethodDescriptor<io.grpc.examples.data.UsersRequest, io.grpc.examples.data.UsersReply> getListAvailDriversMethod;
+    if ((getListAvailDriversMethod = UsersGrpc.getListAvailDriversMethod) == null) {
+      synchronized (UsersGrpc.class) {
+        if ((getListAvailDriversMethod = UsersGrpc.getListAvailDriversMethod) == null) {
+          UsersGrpc.getListAvailDriversMethod = getListAvailDriversMethod =
+              io.grpc.MethodDescriptor.<io.grpc.examples.data.UsersRequest, io.grpc.examples.data.UsersReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListAvailDrivers"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  io.grpc.examples.data.UsersRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  io.grpc.examples.data.UsersReply.getDefaultInstance()))
+              .setSchemaDescriptor(new UsersMethodDescriptorSupplier("ListAvailDrivers"))
+              .build();
+        }
+      }
+    }
+    return getListAvailDriversMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -105,6 +136,13 @@ public final class UsersGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListNamesMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void listAvailDrivers(io.grpc.examples.data.UsersRequest request,
+        io.grpc.stub.StreamObserver<io.grpc.examples.data.UsersReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListAvailDriversMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -114,6 +152,13 @@ public final class UsersGrpc {
                 io.grpc.examples.data.UsersRequest,
                 io.grpc.examples.data.UsersReply>(
                   this, METHODID_LIST_NAMES)))
+          .addMethod(
+            getListAvailDriversMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                io.grpc.examples.data.UsersRequest,
+                io.grpc.examples.data.UsersReply>(
+                  this, METHODID_LIST_AVAIL_DRIVERS)))
           .build();
     }
   }
@@ -143,6 +188,14 @@ public final class UsersGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListNamesMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void listAvailDrivers(io.grpc.examples.data.UsersRequest request,
+        io.grpc.stub.StreamObserver<io.grpc.examples.data.UsersReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListAvailDriversMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +221,13 @@ public final class UsersGrpc {
     public io.grpc.examples.data.UsersReply listNames(io.grpc.examples.data.UsersRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListNamesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public io.grpc.examples.data.UsersReply listAvailDrivers(io.grpc.examples.data.UsersRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListAvailDriversMethod(), getCallOptions(), request);
     }
   }
 
@@ -196,9 +256,18 @@ public final class UsersGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListNamesMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<io.grpc.examples.data.UsersReply> listAvailDrivers(
+        io.grpc.examples.data.UsersRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListAvailDriversMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_LIST_NAMES = 0;
+  private static final int METHODID_LIST_AVAIL_DRIVERS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -219,6 +288,10 @@ public final class UsersGrpc {
       switch (methodId) {
         case METHODID_LIST_NAMES:
           serviceImpl.listNames((io.grpc.examples.data.UsersRequest) request,
+              (io.grpc.stub.StreamObserver<io.grpc.examples.data.UsersReply>) responseObserver);
+          break;
+        case METHODID_LIST_AVAIL_DRIVERS:
+          serviceImpl.listAvailDrivers((io.grpc.examples.data.UsersRequest) request,
               (io.grpc.stub.StreamObserver<io.grpc.examples.data.UsersReply>) responseObserver);
           break;
         default:
@@ -283,6 +356,7 @@ public final class UsersGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UsersFileDescriptorSupplier())
               .addMethod(getListNamesMethod())
+              .addMethod(getListAvailDriversMethod())
               .build();
         }
       }

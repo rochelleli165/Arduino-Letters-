@@ -11,6 +11,7 @@ service Users {
     //sends all users in MissionEats, make sure rpc name
     //matches the public override void in server.java
     rpc ListNames (UsersRequest) returns (UsersReply) {}
+    rpc ListAvailDrivers (UsersRequest) returns (UsersReply) {}
 }
 
 //The request message containing all users

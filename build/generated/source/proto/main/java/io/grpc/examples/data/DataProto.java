@@ -35,9 +35,11 @@ public final class DataProto {
     java.lang.String[] descriptorData = {
       "\n\ndata.proto\022\004data\"\034\n\014UsersRequest\022\014\n\004na" +
       "me\030\001 \001(\t\"\035\n\nUsersReply\022\017\n\007message\030\001 \001(\t2" +
-      "<\n\005Users\0223\n\tListNames\022\022.data.UsersReques" +
-      "t\032\020.data.UsersReply\"\000B(\n\025io.grpc.example" +
-      "s.dataB\tDataProtoP\001\242\002\001Db\006proto3"
+      "x\n\005Users\0223\n\tListNames\022\022.data.UsersReques" +
+      "t\032\020.data.UsersReply\"\000\022:\n\020ListAvailDriver" +
+      "s\022\022.data.UsersRequest\032\020.data.UsersReply\"" +
+      "\000B(\n\025io.grpc.examples.dataB\tDataProtoP\001\242" +
+      "\002\001Db\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
