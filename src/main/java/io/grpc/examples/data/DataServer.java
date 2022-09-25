@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import java.sql.*;
 import io.grpc.protobuf.services.ProtoReflectionService;
 
-
+//This class sets up the server needed to listen to requests
 public class DataServer{
     private static final Logger logger = Logger.getLogger(DataServer.class.getName());
     
